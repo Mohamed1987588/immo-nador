@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Location Immobilier à Nador</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- En-tête -->
+  <header class="navbar">
+    <div class="logo">NadorLoca</div>
+    <nav>
+      <a href="#">Accueil</a>
+      <a href="#annonces">Appartements</a>
+      <a href="#annonces">Maisons</a>
+      <a href="#contact" class="btn-primary">Publier une annonce</a>
+    </nav>
+  </header>
+
+  <!-- Bannière principale -->
+  <section class="hero">
+    <h1>Trouvez votre logement idéal à Nador</h1>
+    <p>Appartements et maisons disponibles à la location journalière ou mensuelle</p>
+  </section>
+
+  <!-- Section des Annonces -->
+  <main id="annonces" class="container">
+    <h2>Dernières offres à Nador</h2>
+    
+    <div class="grid-annonces">
+      
+      <!-- Carte d'Annonce 1 -->
+      <article class="card">
+        <div class="badge">Disponible</div>
+        <img src="images/appartement1.jpg" alt="Appartement vue sur mer Nador">
+        <div class="card-body">
+          <h3>Appartement meublé - Corniche</h3>
+          <p class="location">📍 Nador Corniche</p>
+          <p class="details">2 Chambres • 1 Salon • Wifi • Climatisation</p>
+          <div class="card-footer">
+            <span class="price">350 DH <span>/ nuit</span></span>
+            <a href="https://wa.me/212600000000" class="btn-whatsapp" target="_blank">Contact WhatsApp</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Carte d'Annonce 2 -->
+      <article class="card">
+        <div class="badge">Longue durée</div>
+        <img src="images/maison1.jpg" alt="Maison à louer Nador">
+        <div class="card-body">
+          <h3>Maison avec garage</h3>
+          <p class="location">📍 Quartier Laasi, Nador</p>
+          <p class="details">3 Chambres • Garage • Cuisine équipée</p>
+          <div class="card-footer">
+            <span class="price">3 200 DH <span>/ mois</span></span>
+            <a href="https://wa.me/212600000000" class="btn-whatsapp" target="_blank">Contact WhatsApp</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+</body>
+</html>
+<!-- Barre de recherche et filtres -->
+<section class="filter-section container">
+  <div class="filter-bar">
+    
+    <!-- Filtre par Quartier -->
+    <div class="filter-group">
+      <label for="select-quartier">Quartier</label>
+      <select id="select-quartier">
+        <option value="tous">Tous les quartiers</option>
+        <option value="corniche">Corniche</option>
+        <option value="laasi">Quartier Laasi</option>
+        <option value="marche-gros">Marché de Gros</option>
+      </select>
+    </div>
+
+    <!-- Filtre par Budget Max -->
+    <div class="filter-group">
+      <label for="input-prix">Budget Max (DH)</label>
+      <input type="number" id="input-prix" placeholder="Ex: 500" step="50">
+    </div>
+
+    <!-- Filtre par Type -->
+    <div class="filter-group">
+      <label for="select-type">Durée</label>
+      <select id="select-type">
+        <option value="tous">Toutes les durées</option>
+        <option value="nuit">Par nuitée</option>
+        <option value="mois">Par mois</option>
+      </select>
+    </div>
+
+    <button id="btn-reset" class="btn-reset">Réinitialiser</button>
+  </div>
+</section>
+
+<!-- Grille des annonces mises à jour avec les data-attributes -->
+<main id="annonces" class="container">
+  <h2>Résultats de recherche (<span id="compteur-annonces">2</span>)</h2>
+  
+  <div class="grid-annonces" id="grid-annonces">
+    
+    <!-- Carte 1 -->
+    <article class="card" data-quartier="corniche" data-prix="350" data-type="nuit">
+      <div class="badge">Disponible</div>
+      <img src="images/appartement1.jpg" alt="Appartement vue sur mer Nador">
+      <div class="card-body">
+        <h3>Appartement meublé - Corniche</h3>
+        <p class="location">📍 Nador Corniche</p>
+        <p class="details">2 Chambres • 1 Salon • Wifi • Climatisation</p>
+        <div class="card-footer">
+          <span class="price">350 DH <span>/ nuit</span></span>
+          <a href="https://wa.me/212600000000" class="btn-whatsapp" target="_blank">Contact WhatsApp</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Carte 2 -->
+    <article class="card" data-quartier="laasi" data-prix="3200" data-type="mois">
+      <div class="badge">Longue durée</div>
+      <img src="images/maison1.jpg" alt="Maison à louer Nador">
+      <div class="card-body">
+        <h3>Maison avec garage</h3>
+        <p class="location">📍 Quartier Laasi, Nador</p>
+        <p class="details">3 Chambres • Garage • Cuisine équipée</p>
+        <div class="card-footer">
+          <span class="price">3 200 DH <span>/ mois</span></span>
+          <a href="https://wa.me/212600000000" class="btn-whatsapp" target="_blank">Contact WhatsApp</a>
+        </div>
+      </div>
+    </article>
+
+  </div>
+  
+  <!-- Message si aucun résultat -->
+  <p id="no-results" class="no-results" style="display: none;">
+    Aucun logement ne correspond à vos critères de recherche.
+  </p>
+</main>
