@@ -11,7 +11,7 @@
   <!-- Swiper CSS (Slider / Carrousel) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
-  <!-- Fancybox CSS (Agrandissement photos & vidéos HD) -->
+  <!-- Fancybox CSS (Agrandissement photos HD) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
 
   <!-- Icones FontAwesome -->
@@ -64,7 +64,7 @@
       <!-- Sélecteur de Langue + Contact -->
       <div class="flex items-center gap-3">
         
-        <!-- Menu Doulant Multilingue -->
+        <!-- Menu Déroulant Multilingue -->
         <div class="relative">
           <select id="lang-select" onchange="changeLanguage(this.value)" class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs sm:text-sm font-bold py-2 px-3 rounded-xl border border-slate-200 cursor-pointer outline-none transition">
             <option value="fr">🇫🇷 FR</option>
@@ -117,7 +117,7 @@
     
     <div class="mb-10 text-center sm:text-left">
       <h2 id="sec-title" class="text-3xl font-extrabold text-slate-900">Nos 4 Logements Disponibles</h2>
-      <p id="sec-subtitle" class="text-slate-500 mt-1">Faites défiler pour voir la vidéo et les photos de chaque bien</p>
+      <p id="sec-subtitle" class="text-slate-500 mt-1">Faites défiler pour voir les photos et détails de chaque bien</p>
     </div>
 
     <!-- Grille des 4 Biens -->
@@ -230,10 +230,9 @@
         </div>
       </article>
 
-   <!-- ================= BIEN 4: APPARTEMENT ARUIT ================= -->
+      <!-- ================= BIEN 4: APPARTEMENT ARUIT ================= -->
       <article class="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-xl shadow-slate-200/50 hover:shadow-2xl transition duration-300 flex flex-col">
-        
-        <!-- Carrousel d'Images Aruit -->
+        <!-- Carrousel Photos Aruit -->
         <div class="relative h-80 bg-slate-100">
           <div class="swiper mySwiper h-full">
             <div class="swiper-wrapper">
@@ -251,13 +250,11 @@
           <span class="absolute top-4 right-4 z-10 bg-slate-900/80 backdrop-blur-md text-amber-300 text-xs font-bold px-3 py-1.5 rounded-full">300 DH <span class="txt-night">/ nuit</span></span>
         </div>
 
-        <!-- Informations & 2 Boutons Vidéos -->
         <div class="p-6 flex-1 flex flex-col justify-between">
           <div>
             <h3 class="text-xl font-bold text-slate-900 mb-1">Appartement Aruit</h3>
             <p class="text-slate-500 text-sm font-medium mb-4 flex items-center gap-1.5"><i class="fa-solid fa-plane text-sky-600"></i> Al Aroui - Aruat</p>
-
-            <div class="space-y-2 mb-4">
+            <div class="space-y-2 mb-6">
               <div class="flex items-center gap-2 text-xs font-semibold text-slate-600 bg-slate-50 p-2.5 rounded-xl border">
                 <i class="fa-solid fa-plane-arrival text-emerald-600"></i> <span id="feat-aruit-1">Proche de l'Aéroport Nador-Aruit</span>
               </div>
@@ -265,18 +262,7 @@
                 <i class="fa-solid fa-bed text-emerald-600"></i> <span id="feat-aruit-2">2 Chambres (Lit double + 2 lits)</span>
               </div>
             </div>
-
-            <!-- Les 2 boutons vidéos (Salon & Couloir/SDB) -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-6">
-              <a href="aruit.mp4" data-fancybox="gallery-aruit" class="bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold py-2.5 px-3 rounded-xl shadow-md transition flex items-center justify-center gap-1.5">
-                <i class="fa-solid fa-circle-play text-emerald-400"></i> <span>Vidéo Salon</span>
-              </a>
-              <a href="aruit2.mp4" data-fancybox="gallery-aruit" class="bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold py-2.5 px-3 rounded-xl shadow-md transition flex items-center justify-center gap-1.5">
-                <i class="fa-solid fa-circle-play text-amber-400"></i> <span>Vidéo Entrée / SDB</span>
-              </a>
-            </div>
           </div>
-
           <a href="https://wa.me/212620666900?text=Appartement%20Aruit" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl transition shadow-md flex items-center justify-center gap-2 text-sm">
             <i class="fa-brands fa-whatsapp text-base"></i> <span class="txt-reserve">Réserver sur WhatsApp</span>
           </a>
@@ -330,7 +316,7 @@
         heroSubtitle: 'Location journalière et courte durée dans les meilleurs emplacements : Taouima, Passo, Jaadar et Aruit (Aéroport).',
         btnHeroWa: 'Réservation WhatsApp',
         secTitle: 'Nos 4 Logements Disponibles',
-        secSubtitle: 'Faites défiler pour voir la vidéo et les photos de chaque bien',
+        secSubtitle: 'Faites défiler pour voir les photos et détails de chaque bien',
         badgeHouse: 'Maison',
         txtApt: 'Appartement',
         txtAirport: 'Aéroport',
@@ -354,7 +340,7 @@
         heroSubtitle: 'كراء يومي وقصير المدى في أفضل المواقع: تاويما، باسو، جعدار والعروي (المطار).',
         btnHeroWa: 'الحجز عبر واتساب',
         secTitle: 'العقارات 4 المتاحة حالياً',
-        secSubtitle: 'مرر لرؤية الفيديو والصور الخاصة بكل عقار',
+        secSubtitle: 'مرر لرؤية الصور والتفاصيل الخاصة بكل عقار',
         badgeHouse: 'منزل',
         txtApt: 'شقة',
         txtAirport: 'المطار',
@@ -378,7 +364,7 @@
         heroSubtitle: 'Alquiler diario y de corta estancia en las mejores zonas: Taouima, Passo, Jaadar y Aruit (Aeropuerto).',
         btnHeroWa: 'Reserva por WhatsApp',
         secTitle: 'Nuestros 4 Alojamientos Disponibles',
-        secSubtitle: 'Desliza para ver el vídeo y las fotos de cada propiedad',
+        secSubtitle: 'Desliza para ver las fotos y detalles de cada propiedad',
         badgeHouse: 'Casa',
         txtApt: 'Apartamento',
         txtAirport: 'Aeropuerto',
@@ -402,7 +388,7 @@
         heroSubtitle: 'Dagelijkse en korte termijn verhuur op de beste locaties: Taouima, Passo, Jaadar en Aruit (Luchthaven).',
         btnHeroWa: 'Boeken via WhatsApp',
         secTitle: 'Onze 4 Beschikbare Accommodaties',
-        secSubtitle: 'Scrol om de video en foto\'s van elk pand te bekijken',
+        secSubtitle: 'Scrol om de foto\'s en details van elk pand te bekijken',
         badgeHouse: 'Huis',
         txtApt: 'Appartement',
         txtAirport: 'Luchthaven',
@@ -426,7 +412,7 @@
         heroSubtitle: 'Daily and short-term rentals in top locations: Taouima, Passo, Jaadar, and Aruit (Airport).',
         btnHeroWa: 'Book via WhatsApp',
         secTitle: 'Our 4 Available Accommodations',
-        secSubtitle: 'Scroll to view the video and photos of each property',
+        secSubtitle: 'Scroll to view photos and details of each property',
         badgeHouse: 'House',
         txtApt: 'Apartment',
         txtAirport: 'Airport',
@@ -450,7 +436,7 @@
         heroSubtitle: 'Tages- und Kurzzeitvermietung in besten Lagen: Taouima, Passo, Jaadar und Aruit (Flughafen).',
         btnHeroWa: 'Über WhatsApp buchen',
         secTitle: 'Unsere 4 verfügbaren Unterkünfte',
-        secSubtitle: 'Scrollen Sie, um das Video und die Fotos jeder Immobilie zu sehen',
+        secSubtitle: 'Scrollen Sie, um Fotos und Details jeder Immobilie zu sehen',
         badgeHouse: 'Haus',
         txtApt: 'Wohnung',
         txtAirport: 'Flughafen',
