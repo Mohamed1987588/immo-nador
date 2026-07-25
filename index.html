@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="fr" id="html-root" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
@@ -153,7 +153,7 @@
               </div>
             </div>
             <div class="mb-6">
-              <a href="taouima.mp4" data-fancybox="gallery-taouima" class="w-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold py-3 px-4 rounded-xl shadow-md transition flex items-center justify-center gap-2">
+              <a href="taouima.mp4#t=0.1" data-fancybox="gallery-taouima" data-type="video" class="w-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold py-3 px-4 rounded-xl shadow-md transition flex items-center justify-center gap-2">
                 <i class="fa-solid fa-circle-play text-emerald-400 text-base"></i> <span class="txt-video-btn">Lancer la Visite Vidéo</span>
               </a>
             </div>
@@ -204,8 +204,8 @@
       <!-- ================= BIEN 3: APPARTEMENT JAADAR ================= -->
       <article class="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-xl shadow-slate-200/50 hover:shadow-2xl transition duration-300 flex flex-col">
         <div class="relative h-80 bg-slate-900 flex items-center justify-center overflow-hidden">
-          <video controls playsinline preload="metadata" class="w-full h-full object-cover">
-            <source src="jaadar.mp4" type="video/mp4">
+          <video controls playsinline preload="metadata" poster="jaadar_cover.jpg" class="w-full h-full object-cover">
+            <source src="jaadar.mp4#t=0.1" type="video/mp4">
           </video>
           <span class="absolute top-4 left-4 z-10 bg-purple-600 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg pointer-events-none"><i class="fa-solid fa-video text-[10px] mr-1"></i> <span class="txt-video-tag">Visite Vidéo</span></span>
           <span class="absolute top-4 right-4 z-10 bg-slate-900/80 backdrop-blur-md text-amber-300 text-xs font-bold px-3 py-1.5 rounded-full pointer-events-none">600 DH <span class="txt-night">/ nuit</span></span>
@@ -262,7 +262,7 @@
               </div>
             </div>
             <div class="mb-6">
-              <a href="aruit.mp4" data-fancybox="gallery-aruit" class="w-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold py-3 px-4 rounded-xl shadow-md transition flex items-center justify-center gap-2">
+              <a href="aruit.mp4#t=0.1" data-fancybox="gallery-aruit" data-type="video" class="w-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold py-3 px-4 rounded-xl shadow-md transition flex items-center justify-center gap-2">
                 <i class="fa-solid fa-circle-play text-emerald-400 text-base"></i> <span class="txt-video-btn">Lancer la Visite Vidéo</span>
               </a>
             </div>
@@ -304,7 +304,7 @@
               </div>
             </div>
             <div class="mb-6">
-              <a href="maisonaruit.mp4" data-fancybox="gallery-maison-aruit" class="w-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold py-3 px-4 rounded-xl shadow-md transition flex items-center justify-center gap-2">
+              <a href="maisonaruit.mp4#t=0.1" data-fancybox="gallery-maison-aruit" data-type="video" class="w-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold py-3 px-4 rounded-xl shadow-md transition flex items-center justify-center gap-2">
                 <i class="fa-solid fa-circle-play text-emerald-400 text-base"></i> <span class="txt-video-btn">Lancer la Visite Vidéo</span>
               </a>
             </div>
@@ -344,7 +344,7 @@
               </div>
             </div>
             <div class="mb-6">
-              <a href="beni_oukil.mp4" data-fancybox="gallery-minivilla" class="w-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold py-3 px-4 rounded-xl shadow-md transition flex items-center justify-center gap-2">
+              <a href="beni_oukil.mp4#t=0.1" data-fancybox="gallery-minivilla" data-type="video" class="w-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold py-3 px-4 rounded-xl shadow-md transition flex items-center justify-center gap-2">
                 <i class="fa-solid fa-circle-play text-emerald-400 text-base"></i> <span class="txt-video-btn">Lancer la Visite Vidéo</span>
               </a>
             </div>
@@ -393,9 +393,13 @@
       navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
     });
 
-    Fancybox.bind("[data-fancybox]", { Hash: false, Thumbs: { autoStart: true } });
+    // Configuration de Fancybox pour gérer nativement la lecture vidéo sans écran noir
+    Fancybox.bind("[data-fancybox]", {
+      Hash: false,
+      Thumbs: { autoStart: true },
+      Html: { video: { autoplay: true } }
+    });
 
-    // Dictionnaire mis à jour avec les 6 biens et 6 langues
     const i18n = {
       fr: {
         heroTitle: 'Trouvez votre logement idéal à <span class="text-emerald-400">Nador & El Aruit</span>',
