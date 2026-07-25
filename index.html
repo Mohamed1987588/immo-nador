@@ -1,97 +1,225 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Location Immobilier à Nador</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Nador Immo - Location courte durée & journalière à Nador</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+  </style>
 </head>
-<body>
+<body class="bg-slate-50 text-slate-800 antialiased">
 
-  <!-- Navigation -->
-  <header class="navbar">
-    <div class="logo">🏠 Nador Immo</div>
-    <nav>
-      <a href="#annonces">Nos Logements</a>
-      <a href="https://wa.me/212600000000" class="btn-primary" target="_blank">Nous Contacter</a>
-    </nav>
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-100 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2 text-xl font-extrabold text-emerald-700 tracking-tight">
+        <span class="p-2 bg-emerald-100 text-emerald-700 rounded-xl">
+          <i class="fa-solid fa-house-chimney"></i>
+        </span>
+        <span>Nador<span class="text-slate-900">Immo</span></span>
+      </a>
+      
+      <div class="flex items-center gap-3">
+        <a href="tel:0620666900" class="hidden sm:flex items-center gap-2 text-slate-700 hover:text-emerald-700 font-bold text-sm px-3 py-2 rounded-lg transition">
+          <i class="fa-solid fa-phone text-emerald-600"></i> 06 20 66 69 00
+        </a>
+        <a href="https://wa.me/212620666900" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold px-4 py-2.5 rounded-xl shadow-md shadow-emerald-600/20 transition flex items-center gap-2">
+          <i class="fa-brands fa-whatsapp text-lg"></i> WhatsApp
+        </a>
+      </div>
+    </div>
   </header>
 
-  <!-- En-tête -->
-  <section class="hero">
-    <h1>Trouvez votre logement idéal à Nador</h1>
-    <p>Location journalière et courte durée</p>
+  <section class="relative bg-gradient-to-b from-slate-900 via-emerald-950 to-slate-900 text-white py-16 px-6">
+    <div class="max-w-4xl mx-auto text-center space-y-6">
+      <span class="inline-flex items-center gap-2 bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
+        <i class="fa-solid fa-location-dot text-rose-400"></i> Nador - Maroc
+      </span>
+      <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight">
+        Trouvez votre logement idéal à <span class="text-emerald-400">Nador</span>
+      </h1>
+      <p class="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto font-normal">
+        Location journalière et courte durée dans les meilleurs quartiers : Taouima, Passo et Jaadar.
+      </p>
+      
+      <div class="pt-4 flex flex-wrap justify-center gap-4">
+        <a href="https://wa.me/212620666900" target="_blank" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-6 py-3 rounded-2xl shadow-lg transition flex items-center gap-2">
+          <i class="fa-brands fa-whatsapp text-xl"></i> Réservation WhatsApp
+        </a>
+        <a href="tel:0620666900" class="bg-white/10 hover:bg-white/20 text-white font-semibold px-6 py-3 rounded-2xl border border-white/20 transition flex items-center gap-2">
+          <i class="fa-solid fa-phone"></i> 06 20 66 69 00
+        </a>
+      </div>
+    </div>
   </section>
 
-  <!-- Section principale des biens -->
-  <main id="annonces" class="container">
-    <h2>Nos Biens Disponibles</h2>
+  <main id="biens" class="max-w-7xl mx-auto px-4 sm:px-6 py-12">
     
-    <div class="grid-annonces" id="grid-annonces">
-      
-      <!-- 1. MAISON TAOUIMA (550 DH / nuit) -->
-      <article class="card" data-quartier="taouima">
-        <div class="badge badge-short">Courte durée</div>
-        <div class="slider-container" id="slider-taouima">
-          <img src="images/taouima1.jpg" class="slide active" alt="Maison Taouima Photo 1">
-          <img src="images/taouima2.jpg" class="slide" alt="Maison Taouima Photo 2">
-          <img src="images/taouima3.jpg" class="slide" alt="Maison Taouima Photo 3">
-          <button class="prev" onclick="changerSlide('slider-taouima', -1)">❮</button>
-          <button class="next" onclick="changerSlide('slider-taouima', 1)">❯</button>
+    <div class="mb-10 text-center sm:text-left">
+      <h2 class="text-3xl font-extrabold text-slate-900">Nos 3 Biens Disponibles</h2>
+      <p class="text-slate-500 mt-1">Maisons et appartements meublés pour vos séjours à Nador</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <article class="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-xl shadow-slate-200/50 hover:shadow-2xl transition duration-300 flex flex-col">
+        <div class="relative h-64 bg-slate-100 overflow-hidden">
+          <img src="taouima1..jpg" alt="Maison Taouima Nador" class="w-full h-full object-cover">
+          <span class="absolute top-4 left-4 bg-emerald-600 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
+            Maison
+          </span>
+          <span class="absolute top-4 right-4 bg-slate-900/80 backdrop-blur-md text-amber-300 text-xs font-bold px-3 py-1.5 rounded-full">
+            550 DH / nuit
+          </span>
         </div>
-        <div class="card-body">
-          <h3>Maison Taouima</h3>
-          <p class="location">📍 Nador - Taouima</p>
-          <p class="details">Maison Spacieuse • Cuisine moderne • Quartier calme</p>
-          <div class="card-footer">
-            <span class="price">550 DH <span>/ nuit</span></span>
-            <a href="https://wa.me/212600000000" class="btn-whatsapp" target="_blank">Contact WhatsApp</a>
+
+        <div class="p-6 flex-1 flex flex-col justify-between">
+          <div>
+            <h3 class="text-xl font-bold text-slate-900 mb-1">Maison Taouima</h3>
+            <p class="text-slate-500 text-sm font-medium mb-4 flex items-center gap-1.5">
+              <i class="fa-solid fa-location-dot text-rose-500"></i> Nador - Taouima
+            </p>
+
+            <div class="space-y-2 mb-6">
+              <div class="flex items-center gap-2 text-xs font-semibold text-slate-600 bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+                <i class="fa-solid fa-circle-check text-emerald-600"></i> Près de Marjane
+              </div>
+              <div class="flex items-center gap-2 text-xs font-semibold text-slate-600 bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+                <i class="fa-solid fa-bus text-emerald-600"></i> Près de la Gare Routière
+              </div>
+              <div class="flex items-center gap-2 text-xs font-semibold text-slate-600 bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+                <i class="fa-solid fa-couch text-emerald-600"></i> Entièrement meublée & spacieuse
+              </div>
+            </div>
+
+            <div class="grid grid-cols-3 gap-2 mb-6">
+              <img src="taouima2.jpg" alt="Chambre Taouima" class="h-16 w-full object-cover rounded-lg border">
+              <img src="taouima3..jpg" alt="Salon Taouima" class="h-16 w-full object-cover rounded-lg border">
+              <img src="taouima4..jpg" alt="Équipement Taouima" class="h-16 w-full object-cover rounded-lg border">
+            </div>
           </div>
+
+          <a href="https://wa.me/212620666900?text=Bonjour,%20je%20suis%20intéressé%20par%20la%20Maison%20à%20Taouima%20(550DH)" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl transition shadow-md shadow-emerald-600/10 flex items-center justify-center gap-2 text-sm">
+            <i class="fa-brands fa-whatsapp text-base"></i> Réserver sur WhatsApp
+          </a>
         </div>
       </article>
 
-      <!-- 2. APPARTEMENT JAADAR (600 DH / nuit) -->
-      <article class="card" data-quartier="jaadar">
-        <div class="badge">🎥 Visite Vidéo</div>
-        <video controls class="card-media" preload="metadata">
-          <source src="images/jaadar.mp4" type="video/mp4">
-          Votre navigateur ne supporte pas la vidéo.
-        </video>
-        <div class="card-body">
-          <h3>Appartement Jaadar</h3>
-          <p class="location">📍 Nador - Jaadar</p>
-          <p class="details">Appartement Meublé • Visite vidéo intégrale disponible</p>
-          <div class="card-footer">
-            <span class="price">600 DH <span>/ nuit</span></span>
-            <a href="https://wa.me/212600000000" class="btn-whatsapp" target="_blank">Contact WhatsApp</a>
+      <article class="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-xl shadow-slate-200/50 hover:shadow-2xl transition duration-300 flex flex-col">
+        <div class="relative h-64 bg-slate-100 overflow-hidden">
+          <img src="na3na34..jpg" alt="Appartement Passo Nador" class="w-full h-full object-cover">
+          <span class="absolute top-4 left-4 bg-sky-600 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
+            Appartement
+          </span>
+          <span class="absolute top-4 right-4 bg-slate-900/80 backdrop-blur-md text-amber-300 text-xs font-bold px-3 py-1.5 rounded-full">
+            500 DH / nuit
+          </span>
+        </div>
+
+        <div class="p-6 flex-1 flex flex-col justify-between">
+          <div>
+            <h3 class="text-xl font-bold text-slate-900 mb-1">Appartement Passo</h3>
+            <p class="text-slate-500 text-sm font-medium mb-4 flex items-center gap-1.5">
+              <i class="fa-solid fa-location-dot text-rose-500"></i> Nador - Quartier Passo
+            </p>
+
+            <div class="space-y-2 mb-6">
+              <div class="flex items-center gap-2 text-xs font-semibold text-slate-600 bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+                <i class="fa-solid fa-couch text-emerald-600"></i> Grand salon marocain
+              </div>
+              <div class="flex items-center gap-2 text-xs font-semibold text-slate-600 bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+                <i class="fa-solid fa-utensils text-emerald-600"></i> Cuisine équipée & chauffe-eau
+              </div>
+              <div class="flex items-center gap-2 text-xs font-semibold text-slate-600 bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+                <i class="fa-solid fa-bed text-emerald-600"></i> Chambre à coucher confortable
+              </div>
+            </div>
+
+            <div class="grid grid-cols-3 gap-2 mb-6">
+              <img src="na3na31.jpg" alt="Cuisine Passo" class="h-16 w-full object-cover rounded-lg border">
+              <img src="na3na32..jpg" alt="Espace Passo" class="h-16 w-full object-cover rounded-lg border">
+              <img src="na3na33..jpg" alt="Chambre Passo" class="h-16 w-full object-cover rounded-lg border">
+            </div>
           </div>
+
+          <a href="https://wa.me/212620666900?text=Bonjour,%20je%20suis%20intéressé%20par%20l'Appartement%20à%20Passo%20(500DH)" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl transition shadow-md shadow-emerald-600/10 flex items-center justify-center gap-2 text-sm">
+            <i class="fa-brands fa-whatsapp text-base"></i> Réserver sur WhatsApp
+          </a>
         </div>
       </article>
 
-      <!-- 3. MAISON NA3NA3 (500 DH / nuit) -->
-      <article class="card" data-quartier="na3na3">
-        <div class="badge badge-short">Courte durée</div>
-        <div class="slider-container" id="slider-na3na3">
-          <img src="images/na3na31.jpg" class="slide active" alt="Maison Na3na3 Photo 1">
-          <img src="images/na3na32.jpg" class="slide" alt="Maison Na3na3 Photo 2">
-          <img src="images/na3na33.jpg" class="slide" alt="Maison Na3na3 Photo 3">
-          <button class="prev" onclick="changerSlide('slider-na3na3', -1)">❮</button>
-          <button class="next" onclick="changerSlide('slider-na3na3', 1)">❯</button>
+      <article class="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-xl shadow-slate-200/50 hover:shadow-2xl transition duration-300 flex flex-col">
+        <div class="relative h-64 bg-slate-900 overflow-hidden">
+          <video controls class="w-full h-full object-cover" poster="na3na34..jpg">
+            <source src="jaadar.mp4" type="video/mp4">
+            Votre navigateur ne prend pas en charge la vidéo.
+          </video>
+          <span class="absolute top-4 left-4 bg-purple-600 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg pointer-events-none">
+            Visite Vidéo
+          </span>
+          <span class="absolute top-4 right-4 bg-slate-900/80 backdrop-blur-md text-amber-300 text-xs font-bold px-3 py-1.5 rounded-full pointer-events-none">
+            600 DH / nuit
+          </span>
         </div>
-        <div class="card-body">
-          <h3>Maison Na3na3</h3>
-          <p class="location">📍 Nador - Na3na3</p>
-          <p class="details">Maison Très Confortable • Idéale Séjour & Vacances</p>
-          <div class="card-footer">
-            <span class="price">500 DH <span>/ nuit</span></span>
-            <a href="https://wa.me/212600000000" class="btn-whatsapp" target="_blank">Contact WhatsApp</a>
+
+        <div class="p-6 flex-1 flex flex-col justify-between">
+          <div>
+            <h3 class="text-xl font-bold text-slate-900 mb-1">Appartement Jaadar</h3>
+            <p class="text-slate-500 text-sm font-medium mb-4 flex items-center gap-1.5">
+              <i class="fa-solid fa-location-dot text-rose-500"></i> Nador - Jaadar
+            </p>
+
+            <div class="space-y-2 mb-6">
+              <div class="flex items-center gap-2 text-xs font-semibold text-slate-600 bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+                <i class="fa-solid fa-star text-amber-500"></i> Finition haut de gamme & Climatisation
+              </div>
+              <div class="flex items-center gap-2 text-xs font-semibold text-slate-600 bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+                <i class="fa-solid fa-tv text-emerald-600"></i> Salons modernes avec Smart TV
+              </div>
+              <div class="flex items-center gap-2 text-xs font-semibold text-slate-600 bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+                <i class="fa-solid fa-film text-purple-600"></i> Visite vidéo complète disponible ci-dessus
+              </div>
+            </div>
           </div>
+
+          <a href="https://wa.me/212620666900?text=Bonjour,%20je%20suis%20intéressé%20par%20l'Appartement%20à%20Jaadar%20(600DH)" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl transition shadow-md shadow-emerald-600/10 flex items-center justify-center gap-2 text-sm">
+            <i class="fa-brands fa-whatsapp text-base"></i> Réserver sur WhatsApp
+          </a>
         </div>
       </article>
 
     </div>
   </main>
 
-  <script src="script.js"></script>
+  <section class="bg-emerald-700 text-white py-12 px-6 mt-12">
+    <div class="max-w-4xl mx-auto text-center space-y-4">
+      <h2 class="text-2xl sm:text-3xl font-extrabold">Besoin d'informations ou d'une réservation rapide ?</h2>
+      <p class="text-emerald-100 text-sm sm:text-base">Contactez-nous directement par téléphone ou WhatsApp.</p>
+      
+      <div class="pt-4 flex flex-wrap justify-center items-center gap-6">
+        <a href="tel:0620666900" class="text-2xl sm:text-3xl font-extrabold hover:underline flex items-center gap-3">
+          <i class="fa-solid fa-phone"></i> 06 20 66 69 00
+        </a>
+        <a href="https://wa.me/212620666900" target="_blank" class="bg-white text-emerald-800 font-bold px-6 py-3 rounded-xl shadow-lg hover:bg-slate-100 transition flex items-center gap-2">
+          <i class="fa-brands fa-whatsapp text-emerald-600 text-xl"></i> Discuter sur WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-6 text-center space-y-2">
+      <p class="text-base font-bold text-white">Nador Immo - Location courte durée</p>
+      <p class="text-xs text-slate-500">&copy; 2026 Nador Immo. Tous droits réservés.</p>
+    </div>
+  </footer>
+
 </body>
 </html>
