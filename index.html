@@ -11,7 +11,7 @@
   <!-- Swiper CSS (Slider / Carrousel) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
-  <!-- Fancybox CSS (Agrandissement photos & vidéos en plein écran) -->
+  <!-- Fancybox CSS (Agrandissement photos & vidéos en plein écran HD) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
 
   <!-- Icones FontAwesome -->
@@ -26,16 +26,16 @@
     /* Personnalisation des boutons de navigation du carrousel */
     .swiper-button-next, .swiper-button-prev {
       color: #ffffff !important;
-      background: rgba(15, 23, 42, 0.7);
-      width: 42px !important;
-      height: 42px !important;
+      background: rgba(15, 23, 42, 0.75);
+      width: 44px !important;
+      height: 44px !important;
       border-radius: 50%;
       backdrop-filter: blur(4px);
       transition: all 0.2s ease;
     }
     .swiper-button-next:hover, .swiper-button-prev:hover {
-      background: rgba(5, 150, 105, 0.9);
-      scale: 1.08;
+      background: rgba(5, 150, 105, 0.95);
+      transform: scale(1.08);
     }
     .swiper-button-next::after, .swiper-button-prev::after {
       font-size: 16px !important;
@@ -100,76 +100,86 @@
     
     <div class="mb-10 text-center sm:text-left">
       <h2 class="text-3xl font-extrabold text-slate-900">Nos Logements Disponibles</h2>
-      <p class="text-slate-500 mt-1">Faites défiler pour voir la vidéo et les photos de chaque bien</p>
+      <p class="text-slate-500 mt-1">Faites défiler le carrousel ou cliquez sur les éléments pour les agrandir en grand écran</p>
     </div>
 
     <!-- Grille des 3 Biens -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-      <!-- BIEN 1: Maison Taouima (Vidéo + 6 Photos) -->
+      <!-- ========================================== -->
+      <!-- BIEN 1: MAISON TAOUIMA (VIDÉO & PHOTOS HD) -->
+      <!-- ========================================== -->
       <article class="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-xl shadow-slate-200/50 hover:shadow-2xl transition duration-300 flex flex-col">
         
-        <!-- Carrousel avec Vidéo & Photos -->
+        <!-- Conteneur Carrousel (Hauteur 384px) -->
         <div class="relative h-96 bg-slate-900">
           <div class="swiper mySwiper h-full">
             <div class="swiper-wrapper">
               
-              <!-- Slide 1: Vidéo de la Maison -->
-              <div class="swiper-slide bg-slate-900 flex items-center justify-center">
-                <video controls class="w-full h-full object-cover" poster="taouima5.jpg">
+              <!-- SLIDE 1 : Vidéo de la Maison Taouima avec bouton Plein Écran -->
+              <div class="swiper-slide bg-slate-900 relative flex items-center justify-center">
+                <video controls playsinline class="w-full h-full object-cover" poster="taouima5.jpg">
                   <source src="taouima.mp4" type="video/mp4">
-                  Votre navigateur ne supporte pas la vidéo.
+                  Votre navigateur ne supporte pas la lecture vidéo.
                 </video>
+                
+                <!-- Bouton pour ouvrir la vidéo en grand écran Fancybox -->
+                <a href="taouima.mp4" data-fancybox="gallery-taouima" data-caption="Visite Vidéo - Maison Taouima" class="absolute bottom-3 right-3 bg-emerald-600/90 hover:bg-emerald-600 text-white text-xs font-bold px-3 py-1.5 rounded-xl shadow-lg backdrop-blur-md transition flex items-center gap-1.5 z-20">
+                  <i class="fa-solid fa-expand"></i> Vidéo Plein Écran
+                </a>
               </div>
 
-              <!-- Slide 2: Façade (taouima5.jpg) -->
+              <!-- SLIDE 2 : Façade -->
               <div class="swiper-slide">
                 <a href="taouima5.jpg" data-fancybox="gallery-taouima" data-caption="Maison Taouima - Façade / Extérieur">
                   <img src="taouima5.jpg" alt="Façade Maison Taouima" class="w-full h-full object-cover cursor-pointer hover:scale-105 transition duration-300">
                 </a>
               </div>
 
-              <!-- Slide 3: Escalier / Entrée (taouima6.jpg) -->
+              <!-- SLIDE 3 : Hall & Escalier -->
               <div class="swiper-slide">
                 <a href="taouima6.jpg" data-fancybox="gallery-taouima" data-caption="Maison Taouima - Entrée & Escalier">
                   <img src="taouima6.jpg" alt="Escalier Maison Taouima" class="w-full h-full object-cover cursor-pointer hover:scale-105 transition duration-300">
                 </a>
               </div>
 
-              <!-- Slide 4: Cuisine (taouima1..jpg) -->
+              <!-- SLIDE 4 : Cuisine -->
               <div class="swiper-slide">
                 <a href="taouima1..jpg" data-fancybox="gallery-taouima" data-caption="Maison Taouima - Cuisine équipée">
                   <img src="taouima1..jpg" alt="Cuisine Taouima" class="w-full h-full object-cover cursor-pointer hover:scale-105 transition duration-300">
                 </a>
               </div>
 
-              <!-- Slide 5: Chambre (taouima2.jpg) -->
+              <!-- SLIDE 5 : Chambre -->
               <div class="swiper-slide">
-                <a href="taouima2.jpg" data-fancybox="gallery-taouima" data-caption="Maison Taouima - Chambre">
+                <a href="taouima2.jpg" data-fancybox="gallery-taouima" data-caption="Maison Taouima - Chambre à coucher">
                   <img src="taouima2.jpg" alt="Chambre Taouima" class="w-full h-full object-cover cursor-pointer hover:scale-105 transition duration-300">
                 </a>
               </div>
 
-              <!-- Slide 6: Salon (taouima3..jpg) -->
+              <!-- SLIDE 6 : Salon -->
               <div class="swiper-slide">
                 <a href="taouima3..jpg" data-fancybox="gallery-taouima" data-caption="Maison Taouima - Grand Salon">
                   <img src="taouima3..jpg" alt="Salon Taouima" class="w-full h-full object-cover cursor-pointer hover:scale-105 transition duration-300">
                 </a>
               </div>
 
-              <!-- Slide 7: Équipements (taouima4..jpg) -->
+              <!-- SLIDE 7 : Équipements / TV / Wifi -->
               <div class="swiper-slide">
-                <a href="taouima4..jpg" data-fancybox="gallery-taouima" data-caption="Maison Taouima - TV & Wifi">
+                <a href="taouima4..jpg" data-fancybox="gallery-taouima" data-caption="Maison Taouima - Télévision & Wifi">
                   <img src="taouima4..jpg" alt="Équipements Taouima" class="w-full h-full object-cover cursor-pointer hover:scale-105 transition duration-300">
                 </a>
               </div>
 
             </div>
+            
+            <!-- Flèches & Pagination du Slider -->
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
             <div class="swiper-pagination"></div>
           </div>
 
+          <!-- Badges d'information -->
           <span class="absolute top-4 left-4 z-10 bg-emerald-600 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
             <i class="fa-solid fa-play text-[10px] mr-1"></i> Vidéo & Photos
           </span>
@@ -204,7 +214,9 @@
         </div>
       </article>
 
-      <!-- BIEN 2: Appartement Passo -->
+      <!-- ========================================== -->
+      <!-- BIEN 2: APPARTEMENT PASSO                  -->
+      <!-- ========================================== -->
       <article class="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-xl shadow-slate-200/50 hover:shadow-2xl transition duration-300 flex flex-col">
         
         <div class="relative h-96 bg-slate-100">
@@ -270,7 +282,9 @@
         </div>
       </article>
 
-      <!-- BIEN 3: Appartement Jaadar -->
+      <!-- ========================================== -->
+      <!-- BIEN 3: APPARTEMENT JAADAR                 -->
+      <!-- ========================================== -->
       <article class="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-xl shadow-slate-200/50 hover:shadow-2xl transition duration-300 flex flex-col">
         
         <div class="relative h-96 bg-slate-900">
@@ -278,11 +292,14 @@
             <div class="swiper-wrapper">
               
               <!-- Slide Vidéo -->
-              <div class="swiper-slide bg-slate-900 flex items-center justify-center">
-                <video controls class="w-full h-full object-cover" poster="na3na34..jpg">
+              <div class="swiper-slide bg-slate-900 relative flex items-center justify-center">
+                <video controls playsinline class="w-full h-full object-cover" poster="na3na34..jpg">
                   <source src="jaadar.mp4" type="video/mp4">
                   Votre navigateur ne supporte pas la vidéo.
                 </video>
+                <a href="jaadar.mp4" data-fancybox="gallery-jaadar" data-caption="Visite Vidéo - Appartement Jaadar" class="absolute bottom-3 right-3 bg-emerald-600/90 hover:bg-emerald-600 text-white text-xs font-bold px-3 py-1.5 rounded-xl shadow-lg backdrop-blur-md transition flex items-center gap-1.5 z-20">
+                  <i class="fa-solid fa-expand"></i> Vidéo Plein Écran
+                </a>
               </div>
 
               <!-- Slide Photo -->
@@ -378,12 +395,18 @@
       },
     });
 
-    // Initialisation de l'agrandissement photo en Plein Écran (Fancybox)
+    // Initialisation de la boîte Plein Écran (Fancybox) pour images et vidéos
     Fancybox.bind("[data-fancybox]", {
       Hash: false,
       Thumbs: {
         autoStart: true,
       },
+      Html: {
+        video: {
+          autoplay: true,
+          controls: true
+        }
+      }
     });
   </script>
 </body>
