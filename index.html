@@ -1,69 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Location Nador</title>
-
-  <!-- CETTE LIGNE EST OBLIGATOIRE POUR APPLIQUER LE DESIGN -->
+  <title>Location Immobilier à Nador</title>
   <link rel="stylesheet" href="style.css">
 </head>
+<body>
 
-<div class="grid-annonces" id="grid-annonces">
+  <!-- Navigation -->
+  <header class="navbar">
+    <div class="logo">🏠 Nador Immo</div>
+    <nav>
+      <a href="#annonces">Nos Logements</a>
+      <a href="https://wa.me/212600000000" class="btn-primary" target="_blank">Nous Contacter</a>
+    </nav>
+  </header>
 
-  <!-- 1. Maison Taouima -->
-  <article class="card" data-quartier="taouima" data-prix="3000" data-type="mois">
-    <div class="badge">Court durée</div>
-    <img src="images/taouima.jpg" alt="Maison Taouima Nador">
-    <div class="card-body">
-      <h3>Maison Taouima</h3>
-      <p class="location">📍 Nador - Taouima</p>
-      <p class="details">Grande Maison • Spacieuse • Quartier Calme</p>
-      <div class="card-footer">
-        <!-- MODIFIER LE PRIX ICI -->
-        <span class="price">550 DH <span>/ mois</span></span>
-        <a href="https://wa.me/212620666900" class="btn-whatsapp" target="_blank">Contact WhatsApp</a>
+  <!-- En-tête -->
+  <section class="hero">
+    <h1>Trouvez votre logement idéal à Nador</h1>
+    <p>Maison Taouima • Appartement Jaadar • Maison Na3na3</p>
+  </section>
+
+  <!-- Filtre rapide -->
+  <section class="filter-section container">
+    <div class="filter-bar">
+      <div class="filter-group">
+        <label for="select-quartier">Quartier</label>
+        <select id="select-quartier">
+          <option value="tous">Tous les quartiers</option>
+          <option value="taouima">Taouima</option>
+          <option value="jaadar">Jaadar</option>
+          <option value="na3na3">Na3na3</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="select-type">Durée</label>
+        <select id="select-type">
+          <option value="tous">Toutes les durées</option>
+          <option value="nuit">Courte durée (Par nuit)</option>
+          <option value="mois">Longue durée (Par mois)</option>
+        </select>
       </div>
     </div>
-  </article>
+  </section>
 
- <article class="card" data-quartier="jaadar" data-prix="350" data-type="nuit">
-  <div class="badge">🎥 Visite Vidéo</div>
-  
-  <video controls poster="images/jaadar.jpg" preload="metadata" class="card-video">
-    <source src="images/jaadar.mp4" type="video/mp4">
-    Votre navigateur ne supporte pas la lecture de vidéos.
-  </video>
+  <!-- Section principale des biens -->
+  <main id="annonces" class="container">
+    <h2>Nos Biens Disponibles</h2>
+    
+    <div class="grid-annonces" id="grid-annonces">
+      
+      <!-- 1. MAISON TAOUIMA (Slider avec toutes vos images + vidéo si souhaitée) -->
+      <article class="card" data-quartier="taouima" data-type="mois">
+        <div class="badge">Longue durée</div>
+        <div class="slider-container" id="slider-taouima">
+          <img src="Maison Taouima/l'entrer.jpeg" class="slide active" alt="Maison Taouima Entrée">
+          <img src="Maison Taouima/Cuisine moderne.jpeg" class="slide" alt="Cuisine moderne">
+          <img src="Maison Taouima/salon traditionnel.jpeg" class="slide" alt="Salon traditionnel">
+          <img src="Maison Taouima/salon avec feuteuille.jpeg" class="slide" alt="Salon avec fauteuil">
+          <img src="Maison Taouima/chambre à cocher lit à 2.jpeg" class="slide" alt="Chambre à coucher">
+          <img src="Maison Taouima/petit chambre.jpeg" class="slide" alt="Petite chambre">
+          <img src="Maison Taouima/lits 2 berbery.jpeg" class="slide" alt="Lits 2 personnes">
+          <img src="Maison Taouima/tv et wifi.jpeg" class="slide" alt="TV et Wifi">
+          <button class="prev" onclick="changerSlide('slider-taouima', -1)">❮</button>
+          <button class="next" onclick="changerSlide('slider-taouima', 1)">❯</button>
+        </div>
+        <div class="card-body">
+          <h3>Maison Taouima</h3>
+          <p class="location">📍 Nador - Taouima</p>
+          <p class="details">Maison Spacieuse • Cuisine moderne • Salons & Multiples Chambres</p>
+          <div class="card-footer">
+            <span class="price">Prix sur demande <span>/ mois</span></span>
+            <a href="https://wa.me/212600000000" class="btn-whatsapp" target="_blank">Contact WhatsApp</a>
+          </div>
+        </div>
+      </article>
 
-  <div class="card-body">
-    <h3>Appartement Jaadar</h3>
-    <p class="location">📍 Nador - Jaadar</p>
-    <p class="details">Appartement Meublé • Visite vidéo disponible</p>
-    <div class="card-footer">
-      <span class="price">600 DH <span>/ nuit</span></span>
-      <a href="https://wa.me/212620666900" class="btn-whatsapp" target="_blank">Contact WhatsApp</a>
+      <!-- 2. APPARTEMENT JAADAR (Vidéo) -->
+      <article class="card" data-quartier="jaadar" data-type="nuit">
+        <div class="badge">🎥 Visite Vidéo</div>
+        <video controls class="card-media">
+          <source src="Appartement Jaadar/Vid%C3%A9o%20apprtement%20Jaadar%20Total.mp4" type="video/mp4">
+          Votre navigateur ne supporte pas la vidéo.
+        </video>
+        <div class="card-body">
+          <h3>Appartement Jaadar</h3>
+          <p class="location">📍 Nador - Jaadar</p>
+          <p class="details">Appartement Meublé • Visite vidéo intégrale disponible</p>
+          <div class="card-footer">
+            <span class="price">Prix sur demande <span>/ nuit</span></span>
+            <a href="https://wa.me/212600000000" class="btn-whatsapp" target="_blank">Contact WhatsApp</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 3. MAISON NA3NA3 (Location courte durée - 500 DH) -->
+      <article class="card" data-quartier="na3na3" data-type="nuit">
+        <div class="badge badge-short">Courte durée</div>
+        <div class="slider-container" id="slider-na3na3">
+          <img src="Maison Na3na3/appartment na3na3.jfif" class="slide active" alt="Maison Na3na3">
+          <img src="Maison Na3na3/Salon.jfif" class="slide" alt="Salon Na3na3">
+          <img src="Maison Na3na3/Cuisine na3na3.jfif" class="slide" alt="Cuisine Na3na3">
+          <img src="Maison Na3na3/chambre à coucher.jfif" class="slide" alt="Chambre à coucher Na3na3">
+          <button class="prev" onclick="changerSlide('slider-na3na3', -1)">❮</button>
+          <button class="next" onclick="changerSlide('slider-na3na3', 1)">❯</button>
+        </div>
+        <div class="card-body">
+          <h3>Maison Na3na3</h3>
+          <p class="location">📍 Nador - Na3na3</p>
+          <p class="details">Maison Très Confortable • Idéale Séjour & Vacances</p>
+          <div class="card-footer">
+            <span class="price">500 DH <span>/ nuit</span></span>
+            <a href="https://wa.me/212600000000" class="btn-whatsapp" target="_blank">Contact WhatsApp</a>
+          </div>
+        </div>
+      </article>
+
     </div>
-  </div>
-</article>
+  </main>
 
-  <!-- 3. Maison Na3na3 -->
-  <article class="card" data-quartier="na3na3" data-prix="2800" data-type="mois">
-    <div class="badge">Court durée</div>
-    <img src="images/na3na3.jpg" alt="Maison Na3na3 Nador">
-    <div class="card-body">
-      <h3>Maison Na3na3</h3>
-      <p class="location">📍 Nador - Na3na3</p>
-      <p class="details">Maison Confortable • Bien située</p>
-      <div class="card-footer">
-        <!-- MODIFIER LE PRIX ICI -->
-        <span class="price">2 800 DH <span>/ mois</span></span>
-        <a href="https://wa.me/212600000000" class="btn-whatsapp" target="_blank">Contact WhatsApp</a>
-      </div>
-    </div>
-  </article>
-
-</div>
-<select id="select-quartier">
-  <option value="tous">Tous les quartiers</option>
-  <option value="taouima">Taouima</option>
-  <option value="jaadar">Jaadar</option>
-  <option value="na3na3">Na3na3</option>
-</select>
+  <script src="script.js"></script>
+</body>
+</html>
