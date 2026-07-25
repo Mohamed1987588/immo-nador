@@ -1,34 +1,40 @@
 <!DOCTYPE html>
-<html lang="fr" class="scroll-smooth">
+<html lang="fr" id="html-root" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nador Immo - Location courte durée & journalière à Nador</title>
+  <title>Nador Immo - Location courte durée / Daily Rentals</title>
   
   <!-- CDN Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- Swiper CSS -->
+  <!-- Swiper CSS (Slider / Carrousel) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
-  <!-- Fancybox CSS -->
+  <!-- Fancybox CSS (Agrandissement photos & vidéos HD) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
 
   <!-- Icones FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Police Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
   
   <style>
-    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    body { font-family: 'Plus Jakarta Sans', 'Cairo', sans-serif; }
+
     .swiper-button-next, .swiper-button-prev {
       color: #ffffff !important;
       background: rgba(15, 23, 42, 0.75);
-      width: 42px !important;
-      height: 42px !important;
+      width: 44px !important;
+      height: 44px !important;
       border-radius: 50%;
       backdrop-filter: blur(4px);
+      transition: all 0.2s ease;
+    }
+    .swiper-button-next:hover, .swiper-button-prev:hover {
+      background: rgba(5, 150, 105, 0.95);
+      transform: scale(1.08);
     }
     .swiper-button-next::after, .swiper-button-prev::after {
       font-size: 16px !important;
@@ -43,9 +49,11 @@
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased">
 
-  <!-- En-tête -->
+  <!-- En-tête / Navigation -->
   <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-100 shadow-sm">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex flex-wrap items-center justify-between gap-4">
+      
+      <!-- Logo -->
       <a href="#" class="flex items-center gap-2 text-xl font-extrabold text-emerald-700 tracking-tight">
         <span class="p-2 bg-emerald-100 text-emerald-700 rounded-xl">
           <i class="fa-solid fa-house-chimney"></i>
@@ -53,14 +61,30 @@
         <span>Nador<span class="text-slate-900">Immo</span></span>
       </a>
       
+      <!-- Sélecteur de Langue + Contact -->
       <div class="flex items-center gap-3">
-        <a href="tel:0620666900" class="hidden sm:flex items-center gap-2 text-slate-700 hover:text-emerald-700 font-bold text-sm px-3 py-2 rounded-lg transition">
+        
+        <!-- Menu Doulant Multilingue -->
+        <div class="relative">
+          <select id="lang-select" onchange="changeLanguage(this.value)" class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs sm:text-sm font-bold py-2 px-3 rounded-xl border border-slate-200 cursor-pointer outline-none transition">
+            <option value="fr">🇫🇷 FR</option>
+            <option value="ar">🇲🇦 العربية</option>
+            <option value="es">🇪🇸 ES</option>
+            <option value="nl">🇳🇱 NL</option>
+            <option value="en">🇬🇧 EN</option>
+            <option value="de">🇩🇪 DE</option>
+          </select>
+        </div>
+
+        <a href="tel:0620666900" class="hidden md:flex items-center gap-2 text-slate-700 hover:text-emerald-700 font-bold text-sm px-3 py-2 rounded-lg transition">
           <i class="fa-solid fa-phone text-emerald-600"></i> 06 20 66 69 00
         </a>
-        <a href="https://wa.me/212620666900" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold px-4 py-2.5 rounded-xl shadow-md transition flex items-center gap-2">
+        
+        <a href="https://wa.me/212620666900" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-bold px-4 py-2.5 rounded-xl shadow-md shadow-emerald-600/20 transition flex items-center gap-2">
           <i class="fa-brands fa-whatsapp text-lg"></i> WhatsApp
         </a>
       </div>
+
     </div>
   </header>
 
@@ -68,14 +92,23 @@
   <section class="relative bg-gradient-to-b from-slate-900 via-emerald-950 to-slate-900 text-white py-16 px-6">
     <div class="max-w-4xl mx-auto text-center space-y-6">
       <span class="inline-flex items-center gap-2 bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
-        <i class="fa-solid fa-location-dot text-rose-400"></i> Nador - Maroc
+        <i class="fa-solid fa-location-dot text-rose-400"></i> Nador & Aruit - Maroc
       </span>
-      <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight">
-        Trouvez votre logement idéal à <span class="text-emerald-400">Nador</span>
+      <h1 id="hero-title" class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight">
+        Trouvez votre logement idéal à <span class="text-emerald-400">Nador & Aruit</span>
       </h1>
-      <p class="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto font-normal">
-        Location journalière et courte durée à Taouima, Passo et Jaadar.
+      <p id="hero-subtitle" class="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto font-normal">
+        Location journalière et courte durée dans les meilleurs emplacements : Taouima, Passo, Jaadar et Aruit (Aéroport).
       </p>
+      
+      <div class="pt-4 flex flex-wrap justify-center gap-4">
+        <a href="https://wa.me/212620666900" target="_blank" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-6 py-3 rounded-2xl shadow-lg transition flex items-center gap-2">
+          <i class="fa-brands fa-whatsapp text-xl"></i> <span id="btn-hero-wa">Réservation WhatsApp</span>
+        </a>
+        <a href="tel:0620666900" class="bg-white/10 hover:bg-white/20 text-white font-semibold px-6 py-3 rounded-2xl border border-white/20 transition flex items-center gap-2">
+          <i class="fa-solid fa-phone"></i> 06 20 66 69 00
+        </a>
+      </div>
     </div>
   </section>
 
@@ -83,186 +116,182 @@
   <main id="biens" class="max-w-7xl mx-auto px-4 sm:px-6 py-12">
     
     <div class="mb-10 text-center sm:text-left">
-      <h2 class="text-3xl font-extrabold text-slate-900">Nos Logements Disponibles</h2>
-      <p class="text-slate-500 mt-1">Cliquez sur les photos pour les agrandir ou visionnez la vidéo</p>
+      <h2 id="sec-title" class="text-3xl font-extrabold text-slate-900">Nos 4 Logements Disponibles</h2>
+      <p id="sec-subtitle" class="text-slate-500 mt-1">Faites défiler pour voir la vidéo et les photos de chaque bien</p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <!-- Grille des 4 Biens -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 
-      <!-- ================= MAISON TAOUIMA ================= -->
+      <!-- ================= BIEN 1: MAISON TAOUIMA ================= -->
       <article class="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-xl shadow-slate-200/50 hover:shadow-2xl transition duration-300 flex flex-col">
-        
-        <!-- Carrousel Photos Propre sans écran noir -->
         <div class="relative h-80 bg-slate-100">
           <div class="swiper mySwiper h-full">
             <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <a href="taouima5.jpg" data-fancybox="gallery-taouima" data-caption="Maison Taouima - Façade">
-                  <img src="taouima5.jpg" alt="Façade" class="w-full h-full object-cover cursor-pointer">
-                </a>
-              </div>
-              <div class="swiper-slide">
-                <a href="taouima6.jpg" data-fancybox="gallery-taouima" data-caption="Maison Taouima - Entrée & Escalier">
-                  <img src="taouima6.jpg" alt="Escalier" class="w-full h-full object-cover cursor-pointer">
-                </a>
-              </div>
-              <div class="swiper-slide">
-                <a href="taouima1..jpg" data-fancybox="gallery-taouima" data-caption="Maison Taouima - Cuisine">
-                  <img src="taouima1..jpg" alt="Cuisine" class="w-full h-full object-cover cursor-pointer">
-                </a>
-              </div>
-              <div class="swiper-slide">
-                <a href="taouima2.jpg" data-fancybox="gallery-taouima" data-caption="Maison Taouima - Chambre">
-                  <img src="taouima2.jpg" alt="Chambre" class="w-full h-full object-cover cursor-pointer">
-                </a>
-              </div>
-              <div class="swiper-slide">
-                <a href="taouima3..jpg" data-fancybox="gallery-taouima" data-caption="Maison Taouima - Salon">
-                  <img src="taouima3..jpg" alt="Salon" class="w-full h-full object-cover cursor-pointer">
-                </a>
-              </div>
+              <div class="swiper-slide"><a href="taouima5.jpg" data-fancybox="gallery-taouima"><img src="taouima5.jpg" class="w-full h-full object-cover"></a></div>
+              <div class="swiper-slide"><a href="taouima6.jpg" data-fancybox="gallery-taouima"><img src="taouima6.jpg" class="w-full h-full object-cover"></a></div>
+              <div class="swiper-slide"><a href="taouima1..jpg" data-fancybox="gallery-taouima"><img src="taouima1..jpg" class="w-full h-full object-cover"></a></div>
+              <div class="swiper-slide"><a href="taouima2.jpg" data-fancybox="gallery-taouima"><img src="taouima2.jpg" class="w-full h-full object-cover"></a></div>
+              <div class="swiper-slide"><a href="taouima3..jpg" data-fancybox="gallery-taouima"><img src="taouima3..jpg" class="w-full h-full object-cover"></a></div>
             </div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
             <div class="swiper-pagination"></div>
           </div>
 
-          <span class="absolute top-4 left-4 z-10 bg-emerald-600 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
-            Maison
-          </span>
-          <span class="absolute top-4 right-4 z-10 bg-slate-900/80 backdrop-blur-md text-amber-300 text-xs font-bold px-3 py-1.5 rounded-full">
-            550 DH / nuit
-          </span>
+          <span id="badge-house" class="absolute top-4 left-4 z-10 bg-emerald-600 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">Maison</span>
+          <span class="absolute top-4 right-4 z-10 bg-slate-900/80 backdrop-blur-md text-amber-300 text-xs font-bold px-3 py-1.5 rounded-full">550 DH <span class="txt-night">/ nuit</span></span>
         </div>
 
         <div class="p-6 flex-1 flex flex-col justify-between">
           <div>
             <h3 class="text-xl font-bold text-slate-900 mb-1">Maison Taouima</h3>
-            <p class="text-slate-500 text-sm font-medium mb-4 flex items-center gap-1.5">
-              <i class="fa-solid fa-location-dot text-rose-500"></i> Nador - Taouima
-            </p>
-
+            <p class="text-slate-500 text-sm font-medium mb-4 flex items-center gap-1.5"><i class="fa-solid fa-location-dot text-rose-500"></i> Nador - Taouima</p>
             <div class="space-y-2 mb-4">
-              <div class="flex items-center gap-2 text-xs font-semibold text-slate-600 bg-slate-50 p-2 rounded-xl border">
-                <i class="fa-solid fa-circle-check text-emerald-600"></i> Près de Marjane & Gare Routière
+              <div class="flex items-center gap-2 text-xs font-semibold text-slate-600 bg-slate-50 p-2.5 rounded-xl border">
+                <i class="fa-solid fa-circle-check text-emerald-600"></i> <span id="feat-taouima-1">Près de Marjane & Gare Routière</span>
               </div>
             </div>
-
-            <!-- BOUTON VISITE VIDÉO PROPRE (S'ouvre en grand écran sans bug d'écran noir) -->
             <div class="mb-6">
               <a href="taouima.mp4" data-fancybox="gallery-taouima" class="w-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold py-3 px-4 rounded-xl shadow-md transition flex items-center justify-center gap-2">
-                <i class="fa-solid fa-circle-play text-emerald-400 text-base"></i> Lancer la Visite Vidéo de la Maison
+                <i class="fa-solid fa-circle-play text-emerald-400 text-base"></i> <span class="txt-video-btn">Lancer la Visite Vidéo</span>
               </a>
             </div>
           </div>
-
-          <a href="https://wa.me/212620666900?text=Bonjour,%20je%20suis%20intéressé%20par%20la%20Maison%20à%20Taouima%20(550DH)" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl transition shadow-md flex items-center justify-center gap-2 text-sm">
-            <i class="fa-brands fa-whatsapp text-base"></i> Réserver sur WhatsApp
+          <a href="https://wa.me/212620666900?text=Maison%20Taouima" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl transition shadow-md flex items-center justify-center gap-2 text-sm">
+            <i class="fa-brands fa-whatsapp text-base"></i> <span class="txt-reserve">Réserver sur WhatsApp</span>
           </a>
         </div>
       </article>
 
-      <!-- ================= APPARTEMENT PASSO ================= -->
+      <!-- ================= BIEN 2: APPARTEMENT PASSO ================= -->
       <article class="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-xl shadow-slate-200/50 hover:shadow-2xl transition duration-300 flex flex-col">
         <div class="relative h-80 bg-slate-100">
           <div class="swiper mySwiper h-full">
             <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <a href="na3na34..jpg" data-fancybox="gallery-passo" data-caption="Appartement Passo - Salon">
-                  <img src="na3na34..jpg" alt="Salon Passo" class="w-full h-full object-cover cursor-pointer">
-                </a>
-              </div>
-              <div class="swiper-slide">
-                <a href="na3na31.jpg" data-fancybox="gallery-passo" data-caption="Appartement Passo - Cuisine">
-                  <img src="na3na31.jpg" alt="Cuisine Passo" class="w-full h-full object-cover cursor-pointer">
-                </a>
-              </div>
-              <div class="swiper-slide">
-                <a href="na3na32..jpg" data-fancybox="gallery-passo" data-caption="Appartement Passo - Coin Repas">
-                  <img src="na3na32..jpg" alt="Coin repas Passo" class="w-full h-full object-cover cursor-pointer">
-                </a>
-              </div>
+              <div class="swiper-slide"><a href="na3na34..jpg" data-fancybox="gallery-passo"><img src="na3na34..jpg" class="w-full h-full object-cover"></a></div>
+              <div class="swiper-slide"><a href="na3na31.jpg" data-fancybox="gallery-passo"><img src="na3na31.jpg" class="w-full h-full object-cover"></a></div>
+              <div class="swiper-slide"><a href="na3na32..jpg" data-fancybox="gallery-passo"><img src="na3na32..jpg" class="w-full h-full object-cover"></a></div>
             </div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
             <div class="swiper-pagination"></div>
           </div>
 
-          <span class="absolute top-4 left-4 z-10 bg-sky-600 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
-            Appartement
-          </span>
-          <span class="absolute top-4 right-4 z-10 bg-slate-900/80 backdrop-blur-md text-amber-300 text-xs font-bold px-3 py-1.5 rounded-full">
-            500 DH / nuit
-          </span>
+          <span class="absolute top-4 left-4 z-10 bg-sky-600 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg txt-apt">Appartement</span>
+          <span class="absolute top-4 right-4 z-10 bg-slate-900/80 backdrop-blur-md text-amber-300 text-xs font-bold px-3 py-1.5 rounded-full">500 DH <span class="txt-night">/ nuit</span></span>
         </div>
 
         <div class="p-6 flex-1 flex flex-col justify-between">
           <div>
             <h3 class="text-xl font-bold text-slate-900 mb-1">Appartement Passo</h3>
-            <p class="text-slate-500 text-sm font-medium mb-4 flex items-center gap-1.5">
-              <i class="fa-solid fa-location-dot text-rose-500"></i> Nador - Quartier Passo
-            </p>
+            <p class="text-slate-500 text-sm font-medium mb-4 flex items-center gap-1.5"><i class="fa-solid fa-location-dot text-rose-500"></i> Nador - Passo</p>
             <div class="space-y-2 mb-6">
-              <div class="flex items-center gap-2 text-xs font-semibold text-slate-600 bg-slate-50 p-2 rounded-xl border">
-                <i class="fa-solid fa-couch text-emerald-600"></i> Grand salon & Cuisine équipée
+              <div class="flex items-center gap-2 text-xs font-semibold text-slate-600 bg-slate-50 p-2.5 rounded-xl border">
+                <i class="fa-solid fa-couch text-emerald-600"></i> <span id="feat-passo-1">Grand salon marocain & Cuisine équipée</span>
+              </div>
+              <div class="flex items-center gap-2 text-xs font-semibold text-slate-600 bg-slate-50 p-2.5 rounded-xl border">
+                <i class="fa-solid fa-bed text-emerald-600"></i> <span id="feat-passo-2">Chambre à coucher confortable</span>
               </div>
             </div>
           </div>
-
-          <a href="https://wa.me/212620666900?text=Bonjour,%20je%20suis%20intéressé%20par%20l'Appartement%20à%20Passo%20(500DH)" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl transition shadow-md flex items-center justify-center gap-2 text-sm">
-            <i class="fa-brands fa-whatsapp text-base"></i> Réserver sur WhatsApp
+          <a href="https://wa.me/212620666900?text=Appartement%20Passo" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl transition shadow-md flex items-center justify-center gap-2 text-sm">
+            <i class="fa-brands fa-whatsapp text-base"></i> <span class="txt-reserve">Réserver sur WhatsApp</span>
           </a>
         </div>
       </article>
 
-      <!-- ================= APPARTEMENT JAADAR ================= -->
+      <!-- ================= BIEN 3: APPARTEMENT JAADAR ================= -->
       <article class="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-xl shadow-slate-200/50 hover:shadow-2xl transition duration-300 flex flex-col">
-        
-        <!-- Lecteur Vidéo Unique -->
         <div class="relative h-80 bg-slate-900 flex items-center justify-center overflow-hidden">
           <video controls playsinline preload="metadata" class="w-full h-full object-cover">
             <source src="jaadar.mp4" type="video/mp4">
-            Votre navigateur ne supporte pas la lecture vidéo.
           </video>
-
-          <!-- Badges d'information -->
-          <span class="absolute top-4 left-4 z-10 bg-purple-600 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg pointer-events-none">
-            <i class="fa-solid fa-video text-[10px] mr-1"></i> Visite Vidéo
-          </span>
-          <span class="absolute top-4 right-4 z-10 bg-slate-900/80 backdrop-blur-md text-amber-300 text-xs font-bold px-3 py-1.5 rounded-full pointer-events-none">
-            600 DH / nuit
-          </span>
+          <span class="absolute top-4 left-4 z-10 bg-purple-600 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg pointer-events-none"><i class="fa-solid fa-video text-[10px] mr-1"></i> <span class="txt-video-tag">Visite Vidéo</span></span>
+          <span class="absolute top-4 right-4 z-10 bg-slate-900/80 backdrop-blur-md text-amber-300 text-xs font-bold px-3 py-1.5 rounded-full pointer-events-none">600 DH <span class="txt-night">/ nuit</span></span>
         </div>
 
-        <!-- Informations & Contact -->
         <div class="p-6 flex-1 flex flex-col justify-between">
           <div>
             <h3 class="text-xl font-bold text-slate-900 mb-1">Appartement Jaadar</h3>
-            <p class="text-slate-500 text-sm font-medium mb-4 flex items-center gap-1.5">
-              <i class="fa-solid fa-location-dot text-rose-500"></i> Nador - Jaadar
-            </p>
-
+            <p class="text-slate-500 text-sm font-medium mb-4 flex items-center gap-1.5"><i class="fa-solid fa-location-dot text-rose-500"></i> Nador - Jaadar</p>
             <div class="space-y-2 mb-6">
-              <div class="flex items-center gap-2 text-xs font-semibold text-slate-600 bg-slate-50 p-2.5 rounded-xl border border-slate-100">
-                <i class="fa-solid fa-star text-amber-500"></i> Finition haut de gamme & Climatisation
+              <div class="flex items-center gap-2 text-xs font-semibold text-slate-600 bg-slate-50 p-2.5 rounded-xl border">
+                <i class="fa-solid fa-star text-amber-500"></i> <span id="feat-jaadar-1">Finition haut de gamme & Climatisation</span>
               </div>
-              <div class="flex items-center gap-2 text-xs font-semibold text-slate-600 bg-slate-50 p-2.5 rounded-xl border border-slate-100">
-                <i class="fa-solid fa-tv text-emerald-600"></i> Salons modernes avec Smart TV
-              </div>
-              <div class="flex items-center gap-2 text-xs font-semibold text-slate-600 bg-slate-50 p-2.5 rounded-xl border border-slate-100">
-                <i class="fa-solid fa-circle-play text-purple-600"></i> Visite vidéo intégrale disponible
+              <div class="flex items-center gap-2 text-xs font-semibold text-slate-600 bg-slate-50 p-2.5 rounded-xl border">
+                <i class="fa-solid fa-tv text-emerald-600"></i> <span id="feat-jaadar-2">Salons modernes avec Smart TV</span>
               </div>
             </div>
           </div>
+          <a href="https://wa.me/212620666900?text=Appartement%20Jaadar" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl transition shadow-md flex items-center justify-center gap-2 text-sm">
+            <i class="fa-brands fa-whatsapp text-base"></i> <span class="txt-reserve">Réserver sur WhatsApp</span>
+          </a>
+        </div>
+      </article>
 
-          <a href="https://wa.me/212620666900?text=Bonjour,%20je%20suis%20intéressé%20par%20l'Appartement%20à%20Jaadar%20(600DH)" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl transition shadow-md flex items-center justify-center gap-2 text-sm">
-            <i class="fa-brands fa-whatsapp text-base"></i> Réserver sur WhatsApp
+      <!-- ================= BIEN 4: APPARTEMENT ARUIT ================= -->
+      <article class="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-xl shadow-slate-200/50 hover:shadow-2xl transition duration-300 flex flex-col">
+        <div class="relative h-80 bg-slate-100">
+          <div class="swiper mySwiper h-full">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide"><a href="aruit3.jpg" data-fancybox="gallery-aruit"><img src="aruit3.jpg" class="w-full h-full object-cover"></a></div>
+              <div class="swiper-slide"><a href="aruit2.jpg" data-fancybox="gallery-aruit"><img src="aruit2.jpg" class="w-full h-full object-cover"></a></div>
+              <div class="swiper-slide"><a href="aruit1.jpg" data-fancybox="gallery-aruit"><img src="aruit1.jpg" class="w-full h-full object-cover"></a></div>
+              <div class="swiper-slide"><a href="aruit4.jpg" data-fancybox="gallery-aruit"><img src="aruit4.jpg" class="w-full h-full object-cover"></a></div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+          </div>
+
+          <span class="absolute top-4 left-4 z-10 bg-amber-600 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg txt-airport">Aéroport</span>
+          <span class="absolute top-4 right-4 z-10 bg-slate-900/80 backdrop-blur-md text-amber-300 text-xs font-bold px-3 py-1.5 rounded-full">300 DH <span class="txt-night">/ nuit</span></span>
+        </div>
+
+        <div class="p-6 flex-1 flex flex-col justify-between">
+          <div>
+            <h3 class="text-xl font-bold text-slate-900 mb-1">Appartement Aruit</h3>
+            <p class="text-slate-500 text-sm font-medium mb-4 flex items-center gap-1.5"><i class="fa-solid fa-plane text-sky-600"></i> Al Aroui - Aruat</p>
+            <div class="space-y-2 mb-4">
+              <div class="flex items-center gap-2 text-xs font-semibold text-slate-600 bg-slate-50 p-2.5 rounded-xl border">
+                <i class="fa-solid fa-plane-arrival text-emerald-600"></i> <span id="feat-aruit-1">Proche de l'Aéroport Nador-Aruit</span>
+              </div>
+              <div class="flex items-center gap-2 text-xs font-semibold text-slate-600 bg-slate-50 p-2.5 rounded-xl border">
+                <i class="fa-solid fa-bed text-emerald-600"></i> <span id="feat-aruit-2">2 Chambres (Lit double + 2 lits)</span>
+              </div>
+            </div>
+            <div class="mb-6">
+              <a href="aruit.mp4" data-fancybox="gallery-aruit" class="w-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold py-3 px-4 rounded-xl shadow-md transition flex items-center justify-center gap-2">
+                <i class="fa-solid fa-circle-play text-emerald-400 text-base"></i> <span class="txt-video-btn">Lancer la Visite Vidéo</span>
+              </a>
+            </div>
+          </div>
+          <a href="https://wa.me/212620666900?text=Appartement%20Aruit" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl transition shadow-md flex items-center justify-center gap-2 text-sm">
+            <i class="fa-brands fa-whatsapp text-base"></i> <span class="txt-reserve">Réserver sur WhatsApp</span>
           </a>
         </div>
       </article>
 
     </div>
   </main>
+
+  <!-- Section Contact Footer -->
+  <section class="bg-emerald-700 text-white py-12 px-6 mt-12">
+    <div class="max-w-4xl mx-auto text-center space-y-4">
+      <h2 id="cta-title" class="text-2xl sm:text-3xl font-extrabold">Besoin d'informations ou d'une réservation rapide ?</h2>
+      <p id="cta-desc" class="text-emerald-100 text-sm sm:text-base">Contactez-nous directement par téléphone ou WhatsApp.</p>
+      
+      <div class="pt-4 flex flex-wrap justify-center items-center gap-6">
+        <a href="tel:0620666900" class="text-2xl sm:text-3xl font-extrabold hover:underline flex items-center gap-3">
+          <i class="fa-solid fa-phone"></i> 06 20 66 69 00
+        </a>
+        <a href="https://wa.me/212620666900" target="_blank" class="bg-white text-emerald-800 font-bold px-6 py-3 rounded-xl shadow-lg hover:bg-slate-100 transition flex items-center gap-2">
+          <i class="fa-brands fa-whatsapp text-emerald-600 text-xl"></i> <span id="cta-wa">Discuter sur WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </section>
 
   <!-- Footer -->
   <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800">
@@ -272,26 +301,204 @@
     </div>
   </footer>
 
-  <!-- Scripts -->
+  <!-- Scripts JavaScript & Dictionnaire Multilingue -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
   <script>
     var swiper = new Swiper(".mySwiper", {
       loop: true,
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-      },
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
+      pagination: { el: ".swiper-pagination", clickable: true },
+      navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
     });
 
-    Fancybox.bind("[data-fancybox]", {
-      Hash: false,
-      Thumbs: { autoStart: true }
-    });
+    Fancybox.bind("[data-fancybox]", { Hash: false, Thumbs: { autoStart: true } });
+
+    // Dictionnaire des 6 langues
+    const i18n = {
+      fr: {
+        heroTitle: 'Trouvez votre logement idéal à <span class="text-emerald-400">Nador & Aruit</span>',
+        heroSubtitle: 'Location journalière et courte durée dans les meilleurs emplacements : Taouima, Passo, Jaadar et Aruit (Aéroport).',
+        btnHeroWa: 'Réservation WhatsApp',
+        secTitle: 'Nos 4 Logements Disponibles',
+        secSubtitle: 'Faites défiler pour voir la vidéo et les photos de chaque bien',
+        badgeHouse: 'Maison',
+        txtApt: 'Appartement',
+        txtAirport: 'Aéroport',
+        txtNight: '/ nuit',
+        txtVideoBtn: 'Lancer la Visite Vidéo',
+        txtVideoTag: 'Visite Vidéo',
+        txtReserve: 'Réserver sur WhatsApp',
+        featTaouima1: 'Près de Marjane & Gare Routière',
+        featPasso1: 'Grand salon marocain & Cuisine équipée',
+        featPasso2: 'Chambre à coucher confortable',
+        featJaadar1: 'Finition haut de gamme & Climatisation',
+        featJaadar2: 'Salons modernes avec Smart TV',
+        featAruit1: "Proche de l'Aéroport Nador-Aruit",
+        featAruit2: '2 Chambres (Lit double + 2 lits)',
+        ctaTitle: "Besoin d'informations ou d'une réservation rapide ?",
+        ctaDesc: 'Contactez-nous directement par téléphone ou WhatsApp.',
+        ctaWa: 'Discuter sur WhatsApp'
+      },
+      ar: {
+        heroTitle: 'اعثر على سكنك المثالي في <span class="text-emerald-400">الناظور والعروي</span>',
+        heroSubtitle: 'كراء يومي وقصير المدى في أفضل المواقع: تاويما، باسو، جعدار والعروي (المطار).',
+        btnHeroWa: 'الحجز عبر واتساب',
+        secTitle: 'العقارات 4 المتاحة حالياً',
+        secSubtitle: 'مرر لرؤية الفيديو والصور الخاصة بكل عقار',
+        badgeHouse: 'منزل',
+        txtApt: 'شقة',
+        txtAirport: 'المطار',
+        txtNight: '/ ليلة',
+        txtVideoBtn: 'تشغيل فيديو الزيارة',
+        txtVideoTag: 'فيديو الزيارة',
+        txtReserve: 'احجز عبر واتساب',
+        featTaouima1: 'قريب من مرجان والمحطة الطرقية',
+        featPasso1: 'صالون مغربي كبير ومطبخ مجهز',
+        featPasso2: 'غرفة نوم مريحة',
+        featJaadar1: 'تشطيب فاخر وتكييف هواء',
+        featJaadar2: 'صالونات حديثة مع تلفاز ذكي',
+        featAruit1: 'قريب جداً من مطار الناظور العروي',
+        featAruit2: 'غرفتان (سرير مزدوج + سريران)',
+        ctaTitle: 'هل تحتاج إلى معلومات أو حجز سريع؟',
+        ctaDesc: 'تواصل معنا مباشرة عبر الهاتف أو الواتساب.',
+        ctaWa: 'محادثة عبر الواتساب'
+      },
+      es: {
+        heroTitle: 'Encuentra tu alojamiento ideal en <span class="text-emerald-400">Nador y Aruit</span>',
+        heroSubtitle: 'Alquiler diario y de corta estancia en las mejores zonas: Taouima, Passo, Jaadar y Aruit (Aeropuerto).',
+        btnHeroWa: 'Reserva por WhatsApp',
+        secTitle: 'Nuestros 4 Alojamientos Disponibles',
+        secSubtitle: 'Desliza para ver el vídeo y las fotos de cada propiedad',
+        badgeHouse: 'Casa',
+        txtApt: 'Apartamento',
+        txtAirport: 'Aeropuerto',
+        txtNight: '/ noche',
+        txtVideoBtn: 'Ver Vídeo de la Propiedad',
+        txtVideoTag: 'Vídeo Tour',
+        txtReserve: 'Reservar por WhatsApp',
+        featTaouima1: 'Cerca de Marjane y Estación de Autobuses',
+        featPasso1: 'Gran salón marroquí y cocina equipada',
+        featPasso2: 'Dormitorio cómodo',
+        featJaadar1: 'Acabados de lujo y aire acondicionado',
+        featJaadar2: 'Salones modernos con Smart TV',
+        featAruit1: 'Cerca del Aeropuerto de Nador-Aruit',
+        featAruit2: '2 Dormitorios (Cama doble + 2 camas)',
+        ctaTitle: '¿Necesitas información o una reserva rápida?',
+        ctaDesc: 'Contáctanos directamente por teléfono o WhatsApp.',
+        ctaWa: 'Chatear por WhatsApp'
+      },
+      nl: {
+        heroTitle: 'Vind uw ideale accommodatie in <span class="text-emerald-400">Nador & Aruit</span>',
+        heroSubtitle: 'Dagelijkse en korte termijn verhuur op de beste locaties: Taouima, Passo, Jaadar en Aruit (Luchthaven).',
+        btnHeroWa: 'Boeken via WhatsApp',
+        secTitle: 'Onze 4 Beschikbare Accommodaties',
+        secSubtitle: 'Scrol om de video en foto\'s van elk pand te bekijken',
+        badgeHouse: 'Huis',
+        txtApt: 'Appartement',
+        txtAirport: 'Luchthaven',
+        txtNight: '/ nacht',
+        txtVideoBtn: 'Start Videotour',
+        txtVideoTag: 'Videotour',
+        txtReserve: 'Reserveren via WhatsApp',
+        featTaouima1: 'Dicht bij Marjane & Busstation',
+        featPasso1: 'Grote Marokkaanse salon & ingerichte keuken',
+        featPasso2: 'Comfortabele slaapkamer',
+        featJaadar1: 'Luxe afwerking & Airconditioning',
+        featJaadar2: 'Moderne salons met Smart TV',
+        featAruit1: 'Vlakbij Luchthaven Nador-Aruit',
+        featAruit2: '2 Slaapkamers (Tweepersoonsbed + 2 bedden)',
+        ctaTitle: 'Informatie nodig of snel reserveren?',
+        ctaDesc: 'Neem rechtstreeks contact op via telefoon of WhatsApp.',
+        ctaWa: 'Chat via WhatsApp'
+      },
+      en: {
+        heroTitle: 'Find your ideal accommodation in <span class="text-emerald-400">Nador & Aruit</span>',
+        heroSubtitle: 'Daily and short-term rentals in top locations: Taouima, Passo, Jaadar, and Aruit (Airport).',
+        btnHeroWa: 'Book via WhatsApp',
+        secTitle: 'Our 4 Available Accommodations',
+        secSubtitle: 'Scroll to view the video and photos of each property',
+        badgeHouse: 'House',
+        txtApt: 'Apartment',
+        txtAirport: 'Airport',
+        txtNight: '/ night',
+        txtVideoBtn: 'Watch Video Tour',
+        txtVideoTag: 'Video Tour',
+        txtReserve: 'Book on WhatsApp',
+        featTaouima1: 'Near Marjane & Bus Station',
+        featPasso1: 'Large Moroccan lounge & equipped kitchen',
+        featPasso2: 'Comfortable bedroom',
+        featJaadar1: 'High-end finish & Air conditioning',
+        featJaadar2: 'Modern lounges with Smart TV',
+        featAruit1: 'Close to Nador-Aruit Airport',
+        featAruit2: '2 Bedrooms (Double bed + 2 single beds)',
+        ctaTitle: 'Need information or a quick booking?',
+        ctaDesc: 'Contact us directly by phone or WhatsApp.',
+        ctaWa: 'Chat on WhatsApp'
+      },
+      de: {
+        heroTitle: 'Finden Sie Ihre ideale Unterkunft in <span class="text-emerald-400">Nador & Aruit</span>',
+        heroSubtitle: 'Tages- und Kurzzeitvermietung in besten Lagen: Taouima, Passo, Jaadar und Aruit (Flughafen).',
+        btnHeroWa: 'Über WhatsApp buchen',
+        secTitle: 'Unsere 4 verfügbaren Unterkünfte',
+        secSubtitle: 'Scrollen Sie, um das Video und die Fotos jeder Immobilie zu sehen',
+        badgeHouse: 'Haus',
+        txtApt: 'Wohnung',
+        txtAirport: 'Flughafen',
+        txtNight: '/ Nacht',
+        txtVideoBtn: 'Video-Tour starten',
+        txtVideoTag: 'Video-Tour',
+        txtReserve: 'Auf WhatsApp buchen',
+        featTaouima1: 'Nahe Marjane & Busbahnhof',
+        featPasso1: 'Großer marokkanischer Salon & Küche',
+        featPasso2: 'Komfortables Schlafzimmer',
+        featJaadar1: 'Luxuriöse Ausstattung & Klimaanlage',
+        featJaadar2: 'Moderne Salons mit Smart-TV',
+        featAruit1: 'Nahe dem Flughafen Nador-Aruit',
+        featAruit2: '2 Schlafzimmer (Doppelbett + 2 Einzelbetten)',
+        ctaTitle: 'Benötigen Sie Informationen oder eine schnelle Buchung?',
+        ctaDesc: 'Kontaktieren Sie uns direkt per Telefon oder WhatsApp.',
+        ctaWa: 'Auf WhatsApp chatten'
+      }
+    };
+
+    function changeLanguage(lang) {
+      const data = i18n[lang];
+      const htmlRoot = document.getElementById('html-root');
+      
+      // Orientation de droite à gauche pour l'Arabe
+      if (lang === 'ar') {
+        htmlRoot.setAttribute('dir', 'rtl');
+      } else {
+        htmlRoot.removeAttribute('dir');
+      }
+
+      // Mise à jour des textes
+      document.getElementById('hero-title').innerHTML = data.heroTitle;
+      document.getElementById('hero-subtitle').innerText = data.heroSubtitle;
+      document.getElementById('btn-hero-wa').innerText = data.btnHeroWa;
+      document.getElementById('sec-title').innerText = data.secTitle;
+      document.getElementById('sec-subtitle').innerText = data.secSubtitle;
+      
+      document.getElementById('badge-house').innerText = data.badgeHouse;
+      document.querySelectorAll('.txt-apt').forEach(el => el.innerText = data.txtApt);
+      document.querySelectorAll('.txt-airport').forEach(el => el.innerText = data.txtAirport);
+      document.querySelectorAll('.txt-night').forEach(el => el.innerText = data.txtNight);
+      document.querySelectorAll('.txt-video-btn').forEach(el => el.innerText = data.txtVideoBtn);
+      document.querySelectorAll('.txt-video-tag').forEach(el => el.innerText = data.txtVideoTag);
+      document.querySelectorAll('.txt-reserve').forEach(el => el.innerText = data.txtReserve);
+
+      document.getElementById('feat-taouima-1').innerText = data.featTaouima1;
+      document.getElementById('feat-passo-1').innerText = data.featPasso1;
+      document.getElementById('feat-passo-2').innerText = data.featPasso2;
+      document.getElementById('feat-jaadar-1').innerText = data.featJaadar1;
+      document.getElementById('feat-jaadar-2').innerText = data.featJaadar2;
+      document.getElementById('feat-aruit-1').innerText = data.featAruit1;
+      document.getElementById('feat-aruit-2').innerText = data.featAruit2;
+
+      document.getElementById('cta-title').innerText = data.ctaTitle;
+      document.getElementById('cta-desc').innerText = data.ctaDesc;
+      document.getElementById('cta-wa').innerText = data.ctaWa;
+    }
   </script>
 </body>
 </html>
